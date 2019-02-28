@@ -733,6 +733,7 @@ Optimizer::PassToken CreateUpgradeMemoryModelPass();
 // where an instruction is moved into a more deeply nested construct.
 Optimizer::PassToken CreateCodeSinkingPass();
 
+Optimizer::PassToken CreateLocalRootPass();
 }  // namespace spvtools
 
 #endif  // INCLUDE_SPIRV_TOOLS_OPTIMIZER_HPP_

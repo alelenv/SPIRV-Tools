@@ -60,6 +60,7 @@ set(SPIRV_TOOLS_OPT_SOURCES
   licm_pass.h
   local_access_chain_convert_pass.h
   local_redundancy_elimination.h
+  local_root_pass.h
   local_single_block_elim_pass.h
   local_single_store_elim_pass.h
   local_ssa_elim_pass.h
@@ -155,6 +156,7 @@ set(SPIRV_TOOLS_OPT_SOURCES
   licm_pass.cpp
   local_access_chain_convert_pass.cpp
   local_redundancy_elimination.cpp
+  local_root_pass.cpp
   local_single_block_elim_pass.cpp
   local_single_store_elim_pass.cpp
   local_ssa_elim_pass.cpp

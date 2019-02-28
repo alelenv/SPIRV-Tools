@@ -809,4 +809,8 @@ Optimizer::PassToken CreateCodeSinkingPass() {
       MakeUnique<opt::CodeSinkingPass>());
 }
 
+Optimizer::PassToken CreateLocalRootPass() {
+  return MakeUnique<Optimizer::PassToken::Impl>(
+    MakeUnique<opt::LocalRootPass>());
+}
 }  // namespace spvtools
