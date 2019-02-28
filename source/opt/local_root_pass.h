@@ -35,6 +35,9 @@ class LocalRootPass : public Pass {
    analysis::ConstantManager *const_mgr;
    analysis::DefUseManager *defuse_mgr;
    analysis::DecorationManager *dec_mgr;
+   FeatureManager *feat_mgr;
+
+   const uint32_t remapDescriptorSet = 8;
 
    enum DescriptorType {
      TypeSampler = 0,
@@ -51,11 +54,14 @@ class LocalRootPass : public Pass {
 
    uint32_t varSbtId;
 
-   struct PatchInfo
+   struct RemapInfo
    {
+     Instruction *origInst;
      uint32_t origId;
      uint32_t newId;
      uint32_t arraySize;
+     uint32_t offset;
+     DescriptorType type;
    };
 
    void Initialize();
@@ -63,7 +69,11 @@ class LocalRootPass : public Pass {
 
    void GetVariableInfo(Instruction *varInst, DescriptorType *, uint32_t *);
    void ScanVariables();
+   void CreateVariable(RemapInfo *);
+   void PatchVariables();
 
+   uint32_t curOffsets[TypeMax];
+   std::vector<RemapInfo *> varsToRemap;
 };
 
 }  // namespace opt
