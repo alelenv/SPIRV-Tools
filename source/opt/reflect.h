@@ -48,7 +48,8 @@ inline bool IsTypeInst(SpvOp opcode) {
          opcode == SpvOpTypeAccelerationStructureNV ||
          opcode == SpvOpTypeAccelerationStructureKHR ||
          opcode == SpvOpTypeRayQueryKHR ||
-         opcode == SpvOpTypeCooperativeMatrixNV;
+         opcode == SpvOpTypeCooperativeMatrixNV ||
+         opcode == SpvOpTypeHitObjectNV;
 }
 inline bool IsConstantInst(SpvOp opcode) {
   return (opcode >= SpvOpConstantTrue && opcode <= SpvOpSpecConstantOp) ||

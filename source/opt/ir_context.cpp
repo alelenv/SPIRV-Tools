@@ -478,6 +478,7 @@ void IRContext::AddCombinatorsForCapability(uint32_t capability) {
                                SpvOpTypeAccelerationStructureNV,
                                SpvOpTypeAccelerationStructureKHR,
                                SpvOpTypeRayQueryKHR,
+                               SpvOpTypeHitObjectNV,
                                SpvOpTypeArray,
                                SpvOpTypeRuntimeArray,
                                SpvOpTypeStruct,

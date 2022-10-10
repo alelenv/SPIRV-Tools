@@ -338,6 +338,7 @@ int32_t spvOpcodeGeneratesType(SpvOp op) {
     // case SpvOpTypeAccelerationStructureKHR: covered by
     // SpvOpTypeAccelerationStructureNV
     case SpvOpTypeRayQueryKHR:
+    case SpvOpTypeHitObjectNV:
       return true;
     default:
       // In particular, OpTypeForwardPointer does not generate a type,

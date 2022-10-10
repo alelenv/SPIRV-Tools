@@ -783,6 +783,22 @@ void ValidationState_t::RegisterStorageClassConsumer(
               }
               return true;
             });
+  } else if (storage_class == SpvStorageClassHitObjectAttributeNV) {
+    function(consumer->function()->id())
+        ->RegisterExecutionModelLimitation([](SpvExecutionModel model,
+                                              std::string* message) {
+          if (model != SpvExecutionModelRayGenerationKHR &&
+              model != SpvExecutionModelClosestHitKHR &&
+              model != SpvExecutionModelMissKHR) {
+            if (message) {
+              *message =
+                  "HitObjectAttributeNV Storage Class is limited to "
+                  "RayGenerationKHR, ClosestHitKHR or MissKHR execution model";
+            }
+            return false;
+          }
+          return true;
+        });
   }
 }
 
@@ -1545,6 +1561,7 @@ bool ValidationState_t::IsValidStorageClass(
       case SpvStorageClassIncomingCallableDataKHR:
       case SpvStorageClassShaderRecordBufferKHR:
       case SpvStorageClassTaskPayloadWorkgroupEXT:
+      case SpvStorageClassHitObjectAttributeNV:
         return true;
       default:
         return false;

@@ -200,7 +200,8 @@ spv_result_t ValidateDecorationTarget(ValidationState_t& _, SpvDecoration dec,
             sc != SpvStorageClassHitAttributeKHR &&
             sc != SpvStorageClassCallableDataKHR &&
             sc != SpvStorageClassIncomingCallableDataKHR &&
-            sc != SpvStorageClassShaderRecordBufferKHR) {
+            sc != SpvStorageClassShaderRecordBufferKHR &&
+            sc != SpvStorageClassHitObjectAttributeNV) {
           return _.diag(SPV_ERROR_INVALID_ID, target)
                  << _.VkErrorID(6672) << _.SpvDecorationString(dec)
                  << " decoration must not be applied to this storage class";
